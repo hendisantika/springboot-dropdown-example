@@ -33,7 +33,7 @@ public class DropdownController {
 
     private Map<String, LinkedHashMap<String, String>> dropdownMap;
 
-    public DropdownController(@Value("classpath:dropdownValues.yaml") Resource dropdownYaml) {
+    public DropdownController(@Value("classpath:dropdownValues.yml") Resource dropdownYaml) {
         InputStream input = null;
         try {
             input = dropdownYaml.getInputStream();
@@ -56,7 +56,7 @@ public class DropdownController {
     @RequestMapping("/")
     public String displayExample(ShapeForm shapeForm, Model model) {
 
-        return "example";
+        return "index";
     }
 
     @RequestMapping(value = "/submitShape", params = {"save"}, method = RequestMethod.POST)
