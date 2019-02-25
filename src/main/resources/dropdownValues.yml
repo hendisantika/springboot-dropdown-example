@@ -1,0 +1,20 @@
+polygon:
+  polygon|triangle: triangle
+  polygon|rectangle: rectangle
+  polygon|square: square
+  polygon|rhombus: rhombus
+  polygon|trapezoid: trapezoid
+  polygon|pentagon: pentagon
+  polygon|hexagon: hexagon
+  polygon|heptagon: heptagon
+  polygon|octagon: octagon
+  polygon|nonagon: nonagon
+  polygon|decagon: decagon
+curved with circular arcs:
+  curved with circular arcs|circle: circle
+  curved with circular arcs|crescent: crescent
+  curved with circular arcs|semicircle: semicircle
+  curved with circular arcs|heart: heart
+curved without circular arcs:
+  curved without circular arcs|ellipse: ellipse
+curved without circular arcs|oval: oval
