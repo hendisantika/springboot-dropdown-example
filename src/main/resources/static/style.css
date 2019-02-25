@@ -1,0 +1,29 @@
+@charset "ISO-8859-1";
+body {
+    font: verdana;
+}
+
+h1 {
+    margin-left: 7em;
+}
+
+td {
+    padding: 1em;
+}
+
+th {
+    border-bottom-style: solid;
+}
+
+.label {
+    font-style: bold;
+}
+
+div {
+    margin-left: 4em;
+}
+
+.suggestVals {
+    visibility: false;
+    color: white;
+}
