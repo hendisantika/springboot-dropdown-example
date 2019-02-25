@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1"/>
+    <title>Dropdown Population Example</title>
+    <link media="screen,projection" rel="stylesheet"
+          th:href="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.css}" type="text/css"/>
+    <link media="screen,projection" rel="stylesheet" th:href="@{/style.css}" type="text/css"/>
+</head>
+<body>
+<h1>Dropdown Population Example</h1>
+<form method="post" th:action="@{/submitShape}" th:object="${shapeForm}">
+    <div>
+        <select id="shapeType" th:field="*{shapeType}">
+            <option selected="selected" value="">N/A</option>
+            <option th:each="shapeOpt : ${shapeTypes.entrySet()}"
+                    th:text="${shapeOpt.value}"
+                    th:value="${shapeOpt.key}"></option>
+        </select>
+        <label for="shapeType">Shape Type</label>
+    </div>
+    <div>
+        <select id="shape" th:field="*{shape}"></select>
+        <label class="active" for="shape">Shape</label>
+        <span class="suggestVals" id="shapeSuggestVals" th:text="${shapeSuggestionsJSON}"></span>
+    </div>
+</form>
+<script th:src="@{/webjars/jquery/3.2.0/jquery.js}"></script>
+<script th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.js}"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".suggestVals").hide();
+
+        var shapeSuggestions = JSON.parse($("#shapeSuggestVals").text());
+        console.log(shapeSuggestions);
+
+        $("#shapeType").change(function (e) {
+            var type = $("#shapeType").val();
+            console.log("ShapeType changed to " + type);
+            var htmlOptions = "";
+            var shapeMap = shapeSuggestions[type];
+            console.log(shapeMap);
+            $.each(shapeMap, function (shapeKey, shapeVal) {
+                console.log("shape option: " + shapeKey + " " + shapeVal);
+                htmlOptions = htmlOptions + "<option value=" + shapeKey + ">" + shapeVal + "</option>";
+            });
+            $("#shape").html(htmlOptions);
+            $("#shape").trigger('contentChanged');
+        });
+    });
+</script>
+</body>
+</html>
